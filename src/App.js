@@ -65,8 +65,13 @@ function App () {
         </ListGroup>
       </Container>
       <p id='more-info'>
-        More info:
-        https://www.cluesolvers.com/outside/vancouver-west-coast-caper
+        More info:&nbsp;
+        <a
+          href='https://www.cluesolvers.com/outside/vancouver-west-coast-caper'
+          target='_blank'
+        >
+          HERE
+        </a>
       </p>
 
       <ConfirmModal
