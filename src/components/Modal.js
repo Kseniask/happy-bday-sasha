@@ -10,10 +10,7 @@ function ConfirmModal ({ setShow, show, setIsCodeEntered }) {
   }
 
   const onFormSubmit = () => {
-    if (code.localeCompare(process.env.PASSCODE.toString())) {
-      console.log(code)
-      console.log(process.env.PASSCODE)
-
+    if (code.localeCompare(process.env.REACT_APP_PASSCODE)) {
       setIsWrong(true)
     } else {
       setIsCodeEntered(true)
@@ -30,7 +27,7 @@ function ConfirmModal ({ setShow, show, setIsCodeEntered }) {
         {isWrong ? (
           'Beeeep, WRONG'
         ) : (
-          <Form onSubmit={onFormSubmit}>
+          <Form>
             <Form.Group className='mb-3' controlId='passcode'>
               <Form.Control
                 type='password'

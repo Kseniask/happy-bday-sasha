@@ -39,9 +39,9 @@ function App () {
             the note about connectivity below)
             <br /> EMAIL: kseniask30@icloud.com
             <br />
-            PASSWORD:
+            PASSWORD:&nbsp;
             {isCodeEntered ? (
-              process.env.PASSWORD
+              process.env.REACT_APP_PASSWORD
             ) : (
               <Button
                 id='show-password'
