@@ -10,7 +10,7 @@ function ConfirmModal ({ setShow, show, setIsCodeEntered }) {
   }
 
   const onFormSubmit = () => {
-    if (code !== process.env.PASSCODE) {
+    if (code.localeCompare(process.env.PASSCODE)) {
       setIsWrong(true)
     } else {
       setIsCodeEntered(true)
