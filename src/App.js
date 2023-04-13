@@ -1,8 +1,14 @@
 import './App.css'
-import { Container, Row, Col, ListGroup } from 'react-bootstrap'
+import { useState } from 'react'
+import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap'
 import dance from './dance.gif'
+import ConfirmModal from './components/Modal'
 
 function App () {
+  const [show, setShow] = useState(false)
+  const [isCodeEntered, setIsCodeEntered] = useState(false)
+  const handleShow = () => setShow(true)
+
   return (
     <Container className='App'>
       <h1 id='header'> Happy B-Day, Sasha!</h1>
@@ -16,12 +22,11 @@ function App () {
         To begin your adventure:
         <ListGroup>
           <ListGroup.Item>
-            {' '}
             1) You will require a charged smartphone. iPhone users require a
             iPhone 5s or newer running iOS 10.3 or later (iPhone 5 or 5c will
             not work), while Android users require a device running Android 4.4
             or later. If you have any technical questions call us in advance at
-            (833) 609-0989.{' '}
+            (833) 609-0989.
           </ListGroup.Item>
           <ListGroup.Item>
             2) Download the Cluesolvers App from App Store or Google Play (you
@@ -34,7 +39,19 @@ function App () {
             the note about connectivity below)
             <br /> EMAIL: kseniask30@icloud.com
             <br />
-            PASSWORD: JCXJ-130423
+            PASSWORD:
+            {isCodeEntered ? (
+              process.env.PASSWORD
+            ) : (
+              <Button
+                id='show-password'
+                variant='primary'
+                onClick={handleShow}
+                height='20px'
+              >
+                Get password
+              </Button>
+            )}
           </ListGroup.Item>
           <ListGroup.Item>
             4) Go to the Start Location (below), read your instructions and
@@ -51,6 +68,12 @@ function App () {
         More info:
         https://www.cluesolvers.com/outside/vancouver-west-coast-caper
       </p>
+
+      <ConfirmModal
+        show={show}
+        setShow={setShow}
+        setIsCodeEntered={setIsCodeEntered}
+      />
     </Container>
   )
 }
